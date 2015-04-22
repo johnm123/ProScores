@@ -1,11 +1,23 @@
-﻿@{
+﻿@model ProScores.Models.ScoresListPageViewModel
+@{
     ViewBag.Title = "Pro Evo Scores";
 }
+<head>
+    <link rel="stylesheet" href="..\..\Content\Site.css">
+</head>
 <div class="row">
     <div class="col-md-4">
         <h2>Results</h2>
-        <p>
-
-        </p>
+        <table>
+            @foreach (var item in Model.Results)
+            {
+                <tr>
+                    <td style="text-align:left">@item.Date.ToShortDateString()</td>
+                    <td style="text-align:right">@item.PlayerHome</td>
+                    <td style="text-align: center">@item.GoalsHome-@item.GoalsAway
+                    <td style="text-align:left">@item.PlayerAway</td>
+                </tr>
+            }
+        </table>
     </div>
 </div>
