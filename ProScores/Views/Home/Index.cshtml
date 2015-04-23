@@ -1,23 +1,34 @@
-﻿@model ProScores.Models.ScoresListPageViewModel
+﻿@model ProScores.Models.ScoresPageViewModel
 @{
     ViewBag.Title = "Pro Evo Scores";
 }
 <head>
     <link rel="stylesheet" href="..\..\Content\Site.css">
 </head>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Results</h2>
+<div class="col-md-4">
+    <h2>Add Result</h2>
+    @using (Html.BeginForm())
+    {
         <table>
-            @foreach (var item in Model.Results)
-            {
-                <tr>
-                    <td style="text-align:left">@item.Date.ToShortDateString()</td>
-                    <td style="text-align:right">@item.PlayerHome</td>
-                    <td style="text-align: center">@item.GoalsHome-@item.GoalsAway
-                    <td style="text-align:left">@item.PlayerAway</td>
-                </tr>
-            }
+            <tr>
+                <td>Home Player Name</td><td>@Html.EditorFor(o => o.NewResult.PlayerHome)</td>
+                <td>Home Player Goals</td><td>@Html.EditorFor(o => o.NewResult.GoalsHome)</td>
+                <td>Away Player Name</td><td>@Html.EditorFor(o => o.NewResult.PlayerAway)</td>
+                <td>Away Player Goals</td><td>@Html.EditorFor(o => o.NewResult.GoalsAway)</td>
+            </tr>
         </table>
-    </div>
+        <input type="submit" name="submit" value="Add Result">
+    }
+    <h2>Results</h2>
+    <table>
+        @foreach (var item in Model.Results)
+        {
+            <tr>
+                <td style="text-align:left">@item.Date.ToShortDateString()</td>
+                <td style="text-align:right">@item.PlayerHome</td>
+                <td style="text-align: center">@item.GoalsHome-@item.GoalsAway
+                <td style="text-align:left">@item.PlayerAway</td>
+            </tr>
+        }
+    </table>
 </div>

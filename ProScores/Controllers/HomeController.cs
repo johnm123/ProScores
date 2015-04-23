@@ -12,6 +12,17 @@ namespace ProScores.Controllers
     {
         public ActionResult Index()
         {
+            return View(new ScoresPageViewModel() { Results = GetTestResults() });
+        }
+
+        [HttpPost]
+        public ActionResult Index(ScoresPageViewModel vm)
+        {
+            return View(new ScoresPageViewModel() { Results = GetTestResults() });
+        }
+
+        private static IEnumerable<ProEvoResult> GetTestResults()
+        {
             var results = new List<ProEvoResult>()
             {
                 new ProEvoResult()
@@ -39,10 +50,7 @@ namespace ProScores.Controllers
                     Date = DateTime.Now
                 }
             };
-            
-            var vm = new ScoresListPageViewModel() { Results = results };
-
-            return View(vm);
+            return results;
         }
     }
 }
