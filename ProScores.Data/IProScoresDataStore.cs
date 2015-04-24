@@ -8,5 +8,7 @@ namespace ProScores.Data
         ProEvoResult Get(int id);
 
         IEnumerable<ProEvoResult> GetAll();
+
+        ProEvoResult CreateOrModify(ProEvoResult result);
     }
 }

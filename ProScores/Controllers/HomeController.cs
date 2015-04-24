@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ProScores.Models;
 using ProScores.Logic;
-using ProScores.Objects;
 
 namespace ProScores.Controllers
 {
     public class HomeController : Controller
     {
-        private IResultManager _resultManager;
+        private readonly IResultManager _resultManager;
 
         public HomeController(IResultManager resultManager)
         {
@@ -18,45 +15,29 @@ namespace ProScores.Controllers
 
         public ActionResult Index()
         {
-            return View(new ScoresPageViewModel() { Results = GetTestResults() });
+            var viewModel = GetModelWithLatestResults();
+
+            return View(viewModel);
         }
 
         [HttpPost]
         public ActionResult Index(ScoresPageViewModel vm)
         {
-            return View(new ScoresPageViewModel() { Results = GetTestResults() });
+            _resultManager.AddResult(vm.NewResult);
+
+            var viewModel = GetModelWithLatestResults();
+
+            return View(viewModel);
         }
 
-        private static IEnumerable<ProEvoResult> GetTestResults()
-        {
-            var results = new List<ProEvoResult>()
+        private ScoresPageViewModel GetModelWithLatestResults()
+        {  
+            var viewModel = new ScoresPageViewModel()
             {
-                new ProEvoResult()
-                {
-                    PlayerHome = "John",
-                    PlayerAway = "Phillip",
-                    GoalsHome = 5,
-                    GoalsAway = 1,
-                    Date = DateTime.Now
-                },
-                new ProEvoResult()
-                {
-                    PlayerHome = "Jacob",
-                    PlayerAway = "Peter",
-                    GoalsHome = 3,
-                    GoalsAway = 5,
-                    Date = DateTime.Now
-                },
-                new ProEvoResult()
-                {
-                    PlayerHome = "Sam",
-                    PlayerAway = "Jason",
-                    GoalsHome = 2,
-                    GoalsAway = 0,
-                    Date = DateTime.Now
-                }
+                Results = _resultManager.GetAllResults()
             };
-            return results;
+
+            return viewModel;
         }
     }
 }

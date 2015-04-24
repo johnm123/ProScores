@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ProScores.Objects;
 
 namespace ProScores.Models
@@ -7,7 +8,10 @@ namespace ProScores.Models
     {
         public ScoresPageViewModel()
         {
-            NewResult = new ProEvoResult();
+            NewResult = new ProEvoResult()
+            {
+                Date = DateTime.Now
+            };
         }
 
         public IEnumerable<ProEvoResult> Results { get; set; }

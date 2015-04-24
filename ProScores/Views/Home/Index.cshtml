@@ -11,16 +11,22 @@
     {
         <table>
             <tr>
-                <td>Home Player Name</td><td>@Html.EditorFor(o => o.NewResult.PlayerHome)</td>
-                <td>Home Player Goals</td><td>@Html.EditorFor(o => o.NewResult.GoalsHome)</td>
-                <td>Away Player Name</td><td>@Html.EditorFor(o => o.NewResult.PlayerAway)</td>
-                <td>Away Player Goals</td><td>@Html.EditorFor(o => o.NewResult.GoalsAway)</td>
+                <td>Home Player</td><td>@Html.EditorFor(o => o.NewResult.PlayerHome)</td>
+                <td>Goals</td><td>@Html.EditorFor(o => o.NewResult.GoalsHome)</td>
+                <td>Away Player</td><td>@Html.EditorFor(o => o.NewResult.PlayerAway)</td>
+                <td>Goals</td><td>@Html.EditorFor(o => o.NewResult.GoalsAway)</td>
             </tr>
         </table>
         <input type="submit" name="submit" value="Add Result">
     }
     <h2>Results</h2>
     <table>
+        <tr>
+            <th>Date</th>
+            <th>Home Player</th>
+            <th>Score</th>
+            <th>Away Player</th>
+        </tr>
         @foreach (var item in Model.Results)
         {
             <tr>

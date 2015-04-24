@@ -41,5 +41,20 @@ namespace ProScores.Data
                 }
             }
         }
+
+        public ProEvoResult CreateOrModify(ProEvoResult result)
+        {
+            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            {
+                store.Initialize();
+
+                using (IDocumentSession session = store.OpenSession())
+                {
+                    session.Store(result);
+                    session.SaveChanges();
+                }
+            }
+            return result;
+        }
     }
 }
