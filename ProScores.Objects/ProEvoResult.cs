@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace ProScores.Objects
 {
     public class ProEvoResult

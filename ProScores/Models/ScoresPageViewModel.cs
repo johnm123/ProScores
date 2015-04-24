@@ -16,6 +16,8 @@ namespace ProScores.Models
 
         public IEnumerable<ProEvoResult> Results { get; set; }
 
+        public IList<PlayerStat> Stats { get; set; }
+
         public ProEvoResult NewResult { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace ProScores.Controllers
 
         public ActionResult Index()
         {
-            var viewModel = GetModelWithLatestResults();
+            var viewModel = GetModelWithLatestResultsAndStats();
 
             return View(viewModel);
         }
@@ -25,16 +25,17 @@ namespace ProScores.Controllers
         {
             _resultManager.AddResult(vm.NewResult);
 
-            var viewModel = GetModelWithLatestResults();
+            var viewModel = GetModelWithLatestResultsAndStats();
 
             return View(viewModel);
         }
 
-        private ScoresPageViewModel GetModelWithLatestResults()
+        private ScoresPageViewModel GetModelWithLatestResultsAndStats()
         {  
             var viewModel = new ScoresPageViewModel()
             {
-                Results = _resultManager.GetAllResults()
+                Results = _resultManager.GetAllResults(),
+                Stats = _resultManager.GetOrderedPlayerStats()
             };
 
             return viewModel;
