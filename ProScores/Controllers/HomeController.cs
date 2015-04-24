@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ProScores.Models;
+using ProScores.Logic;
 using ProScores.Objects;
 
 namespace ProScores.Controllers
 {
     public class HomeController : Controller
     {
+        private IResultManager _resultManager;
+
+        public HomeController(IResultManager resultManager)
+        {
+            _resultManager = resultManager;
+        }
+
         public ActionResult Index()
         {
             return View(new ScoresPageViewModel() { Results = GetTestResults() });

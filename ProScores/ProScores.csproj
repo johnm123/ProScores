@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -112,6 +118,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DependencyInjection\Installer.cs" />
+    <Compile Include="DependencyInjection\WindsorControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +172,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProScores.Data\ProScores.Data.csproj">
+      <Project>{6e4b7da2-5443-4a28-b019-a1bd7c50cb03}</Project>
+      <Name>ProScores.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProScores.Logic\ProScores.Logic.csproj">
+      <Project>{bcb21010-1dc7-44f9-9168-07b4ea0f8890}</Project>
+      <Name>ProScores.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProScores.Objects\ProScores.Objects.csproj">
       <Project>{5b21f1ad-d84e-4594-8336-a64ab27a984f}</Project>
       <Name>ProScores.Objects</Name>
