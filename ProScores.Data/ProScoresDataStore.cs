@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ProScores.Objects;
 using Raven.Client;
@@ -12,11 +11,11 @@ namespace ProScores.Data
     {
         private const string DbName = "scoresDb";
 
-        private const string DbUrl = "http://localhost:8081/";
+        private const string RavenConnectionStringName = "RavenDB";
 
         public IEnumerable<ProEvoResult> GetAll()
         {
-            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
             {
                 store.Initialize(); // initializes document store, by connecting to server and downloading various configurations
 
@@ -30,7 +29,7 @@ namespace ProScores.Data
 
         public ProEvoResult CreateOrModify(ProEvoResult result)
         {
-            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
             {
                 store.Initialize();
 
@@ -45,7 +44,8 @@ namespace ProScores.Data
 
         public Player Create(Player player)
         {
-            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            //using (IDocumentStore store = new DocumentStore { Url = _dbUrl, DefaultDatabase = DbName })
+            using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
             {
                 store.Initialize();
 
@@ -60,7 +60,7 @@ namespace ProScores.Data
 
         public IEnumerable<Player> GetAllPlayers()
         {
-            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
             {
                 store.Initialize(); // initializes document store, by connecting to server and downloading various configurations
 
@@ -74,7 +74,7 @@ namespace ProScores.Data
 
         public void Delete(int id)
         {
-            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
             {
                 store.Initialize();
 
