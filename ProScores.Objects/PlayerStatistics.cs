@@ -1,6 +1,6 @@
 ﻿namespace ProScores.Objects
 {
-    public class PlayerStat
+    public class PlayerStatistics
     {
         public string PlayerName { get; set; }
 

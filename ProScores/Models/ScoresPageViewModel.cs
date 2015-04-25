@@ -12,14 +12,21 @@ namespace ProScores.Models
             {
                 Date = DateTime.Now
             };
+
+            NewPlayer = new Player();
+
             LastResultId = 0;
         }
 
         public IEnumerable<ProEvoResult> Results { get; set; }
 
-        public IList<PlayerStat> Stats { get; set; }
+        public IList<PlayerStatistics> Stats { get; set; }
 
         public ProEvoResult NewResult { get; set; }
+
+        public IEnumerable<Player> Players { get; set; }
+
+        public Player NewPlayer { get; set; }
 
         public int LastResultId { get; set; }
     }

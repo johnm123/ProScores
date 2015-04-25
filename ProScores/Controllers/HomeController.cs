@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using ProScores.Models;
 using ProScores.Logic;
-using ProScores.Objects;
 
 namespace ProScores.Controllers
 {
@@ -32,6 +30,14 @@ namespace ProScores.Controllers
         }
 
         [HttpPost]
+        public ActionResult AddPlayer(ScoresPageViewModel vm)
+        {
+            _resultManager.AddPlayer(vm.NewPlayer);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public ActionResult DeleteResult(int id)
         {
             _resultManager.RemoveResult(id);
@@ -45,6 +51,7 @@ namespace ProScores.Controllers
             {
                 Results = _resultManager.GetAllResults(),
                 Stats = _resultManager.GetOrderedPlayerStats(),
+                Players = _resultManager.GetAllPlayers()
             };
 
             if (viewModel.Results.Any())

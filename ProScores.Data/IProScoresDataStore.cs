@@ -5,11 +5,13 @@ namespace ProScores.Data
 {
     public interface IProScoresDataStore
     {
-        ProEvoResult Get(int id);
-
         IEnumerable<ProEvoResult> GetAll();
 
+        IEnumerable<Player> GetAllPlayers();
+
         ProEvoResult CreateOrModify(ProEvoResult result);
+
+        Player Create(Player player);
 
         void Delete(int id);
     }

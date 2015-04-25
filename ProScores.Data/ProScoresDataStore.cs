@@ -14,20 +14,6 @@ namespace ProScores.Data
 
         private const string DbUrl = "http://localhost:8081/";
 
-        public ProEvoResult Get(int id)
-        {
-            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
-            {
-                store.Initialize(); // initializes document store, by connecting to server and downloading various configurations
-
-                using (IDocumentSession session = store.OpenSession()) // opens a session that will work in context of 'DefaultDatabase'
-                {
-                    var loadedResult = session.Load<ProEvoResult>(id);
-                    return loadedResult;
-                }
-            }
-        }
-
         public IEnumerable<ProEvoResult> GetAll()
         {
             using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
@@ -36,8 +22,8 @@ namespace ProScores.Data
 
                 using (IDocumentSession session = store.OpenSession()) // opens a session that will work in context of 'DefaultDatabase'
                 {
-                    var loadedResultCollection = session.Query<ProEvoResult>().ToList();
-                    return loadedResultCollection;
+                    var collection = session.Query<ProEvoResult>().ToList();
+                    return collection;
                 }
             }
         }
@@ -55,6 +41,35 @@ namespace ProScores.Data
                 }
             }
             return result;
+        }
+
+        public Player Create(Player player)
+        {
+            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            {
+                store.Initialize();
+
+                using (IDocumentSession session = store.OpenSession())
+                {
+                    session.Store(player);
+                    session.SaveChanges();
+                }
+            }
+            return player;
+        }
+
+        public IEnumerable<Player> GetAllPlayers()
+        {
+            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            {
+                store.Initialize(); // initializes document store, by connecting to server and downloading various configurations
+
+                using (IDocumentSession session = store.OpenSession()) // opens a session that will work in context of 'DefaultDatabase'
+                {
+                    var collection = session.Query<Player>().ToList();
+                    return collection;
+                }
+            }
         }
 
         public void Delete(int id)

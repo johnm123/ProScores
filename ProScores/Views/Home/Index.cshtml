@@ -10,19 +10,31 @@
     <h2>Add Result</h2>
     @using (Html.BeginForm("AddResult", "Home", FormMethod.Post))
     {
+        var playerListItems = new List<SelectListItem>();
+        
+        foreach (var player in Model.Players)
+        {
+            var item = new SelectListItem()
+            {
+                Value = player.Name,
+                Text = player.Name
+            };
+            playerListItems.Add(item);
+        }
+            
         <table>
             <tr>
                 <td>Home Player</td>
-                <td>@Html.EditorFor(o => o.NewResult.PlayerHome)</td>
+                <td>@Html.DropDownListFor(o => o.NewResult.PlayerHome, playerListItems, "Select Player") </td>
                 <td>Goals</td>
                 <td>@Html.EditorFor(o => o.NewResult.GoalsHome)</td>
                 <td>Away Player</td>
-                <td>@Html.EditorFor(o => o.NewResult.PlayerAway)</td>
+                <td>@Html.DropDownListFor(o => o.NewResult.PlayerAway, playerListItems, "Select Player") </td>
                 <td>Goals</td>
                 <td>@Html.EditorFor(o => o.NewResult.GoalsAway)</td>
+                <td><input type="submit" name="submit" value="Add Result"></td>
             </tr>
-        </table>
-        <input type="submit" name="submit" value="Add Result">
+        </table> 
     }
     @using (Html.BeginForm("DeleteResult", "Home", new { id = Model.LastResultId }, FormMethod.Post))
     {
@@ -70,4 +82,20 @@
             </tr>
         }
     </table>
+    <h2>Players</h2>
+   @using (Html.BeginForm("AddPlayer", "Home", FormMethod.Post))
+   {
+       <p>@Html.EditorFor(o => o.NewPlayer) <input type="submit" name="submit" value="Add Player"></p>  
+   }
+    @*<table>
+        <tr>
+            <th>Name</th>
+        </tr>
+        @foreach (var item in Model.Players)
+        {
+            <tr>
+                <td>@item.Name</td>
+            </tr>
+        }
+    </table>*@
 </div>
