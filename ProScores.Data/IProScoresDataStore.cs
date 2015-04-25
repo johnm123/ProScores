@@ -10,5 +10,7 @@ namespace ProScores.Data
         IEnumerable<ProEvoResult> GetAll();
 
         ProEvoResult CreateOrModify(ProEvoResult result);
+
+        void Delete(int id);
     }
 }

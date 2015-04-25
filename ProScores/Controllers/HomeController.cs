@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using ProScores.Models;
 using ProScores.Logic;
+using ProScores.Objects;
 
 namespace ProScores.Controllers
 {
@@ -21,22 +24,33 @@ namespace ProScores.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(ScoresPageViewModel vm)
+        public ActionResult AddResult(ScoresPageViewModel vm)
         {
             _resultManager.AddResult(vm.NewResult);
 
-            var viewModel = GetModelWithLatestResultsAndStats();
+            return RedirectToAction("Index");
+        }
 
-            return View(viewModel);
+        [HttpPost]
+        public ActionResult DeleteResult(int id)
+        {
+            _resultManager.RemoveResult(id);
+
+            return RedirectToAction("Index");
         }
 
         private ScoresPageViewModel GetModelWithLatestResultsAndStats()
-        {  
+        {
             var viewModel = new ScoresPageViewModel()
             {
                 Results = _resultManager.GetAllResults(),
-                Stats = _resultManager.GetOrderedPlayerStats()
+                Stats = _resultManager.GetOrderedPlayerStats(),
             };
+
+            if (viewModel.Results.Any())
+            {
+                viewModel.LastResultId = viewModel.Results.Last().Id;
+            }
 
             return viewModel;
         }

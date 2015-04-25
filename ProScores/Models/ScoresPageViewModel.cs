@@ -12,6 +12,7 @@ namespace ProScores.Models
             {
                 Date = DateTime.Now
             };
+            LastResultId = 0;
         }
 
         public IEnumerable<ProEvoResult> Results { get; set; }
@@ -19,5 +20,7 @@ namespace ProScores.Models
         public IList<PlayerStat> Stats { get; set; }
 
         public ProEvoResult NewResult { get; set; }
+
+        public int LastResultId { get; set; }
     }
 }

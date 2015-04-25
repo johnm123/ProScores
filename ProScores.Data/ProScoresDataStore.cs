@@ -56,5 +56,20 @@ namespace ProScores.Data
             }
             return result;
         }
+
+        public void Delete(int id)
+        {
+            using (IDocumentStore store = new DocumentStore { Url = DbUrl, DefaultDatabase = DbName })
+            {
+                store.Initialize();
+
+                using (IDocumentSession session = store.OpenSession())
+                {
+                    string cmd = "ProEvoResults/" + id;
+                    session.Delete(cmd);
+                    session.SaveChanges();
+                }
+            }
+        }
     }
 }

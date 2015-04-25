@@ -1,4 +1,5 @@
-﻿@model ProScores.Models.ScoresPageViewModel
+﻿@using Raven.Abstractions.Data
+@model ProScores.Models.ScoresPageViewModel
 @{
     ViewBag.Title = "Pro Evo Scores";
 }
@@ -7,17 +8,25 @@
 </head>
 <div class="col-md-4">
     <h2>Add Result</h2>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("AddResult", "Home", FormMethod.Post))
     {
         <table>
             <tr>
-                <td>Home Player</td><td>@Html.EditorFor(o => o.NewResult.PlayerHome)</td>
-                <td>Goals</td><td>@Html.EditorFor(o => o.NewResult.GoalsHome)</td>
-                <td>Away Player</td><td>@Html.EditorFor(o => o.NewResult.PlayerAway)</td>
-                <td>Goals</td><td>@Html.EditorFor(o => o.NewResult.GoalsAway)</td>
+                <td>Home Player</td>
+                <td>@Html.EditorFor(o => o.NewResult.PlayerHome)</td>
+                <td>Goals</td>
+                <td>@Html.EditorFor(o => o.NewResult.GoalsHome)</td>
+                <td>Away Player</td>
+                <td>@Html.EditorFor(o => o.NewResult.PlayerAway)</td>
+                <td>Goals</td>
+                <td>@Html.EditorFor(o => o.NewResult.GoalsAway)</td>
             </tr>
         </table>
         <input type="submit" name="submit" value="Add Result">
+    }
+    @using (Html.BeginForm("DeleteResult", "Home", new { id = Model.LastResultId }, FormMethod.Post))
+    {
+        <input type="submit" name="submit" value="Delete Last Result">
     }
     <h2>Rankings</h2>
     <table>
