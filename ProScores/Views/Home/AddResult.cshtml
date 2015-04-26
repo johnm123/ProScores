@@ -1,0 +1,35 @@
+﻿@model ProScores.Models.ScoresListViewModel
+@{
+    ViewBag.Title = "Pro Evo Scores";
+}
+<head>
+    <link rel="stylesheet" href="..\..\Content\Site.css">
+</head>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Add Result</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.EditorFor(o => o.PlayerHome)
+            @Html.EditorFor(o => o.GoalsHome)
+            @Html.EditorFor(o => o.PlayerAway)
+            @Html.EditorFor(o => o.GoalsAway)
+        
+            <input type="submit" name="submit" value="Add Result">
+        }
+
+        <h2>Results List</h2>
+        <table>
+            @foreach (var item in Model.Results)
+            {
+                <tr>
+                    <td style="text-align:left">@item.Date.ToShortDateString()</td>
+                    <td style="text-align:right">@item.PlayerHome</td>
+                    <td style="text-align: center">@item.GoalsHome-@item.GoalsAway
+                    <td style="text-align:left">@item.PlayerAway</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
