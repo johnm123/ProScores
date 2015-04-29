@@ -1,4 +1,4 @@
-﻿@using Raven.Abstractions.Data
+﻿@using System.Collections.Generic
 @model ProScores.Models.ScoresPageViewModel
 @{
     ViewBag.Title = "Pro Evo Scores";
@@ -36,10 +36,6 @@
             </tr>
         </table> 
     }
-    @using (Html.BeginForm("DeleteResult", "Home", new { id = Model.LastResultId }, FormMethod.Post))
-    {
-        <input type="submit" name="submit" value="Delete Last Result">
-    }
     <h2>Rankings</h2>
     <table>
         <tr>
@@ -75,19 +71,23 @@
         @foreach (var item in Model.Results)
         {
             <tr>
-                <td style="text-align:left">@item.Date.ToShortDateString()</td>
-                <td style="text-align:right">@item.PlayerHome</td>
+                <td style="text-align: left">@item.Date.ToShortDateString()</td>
+                <td style="text-align: right">@item.PlayerHome</td>
                 <td style="text-align: center">@item.GoalsHome-@item.GoalsAway
-                <td style="text-align:left">@item.PlayerAway</td>
+                <td style="text-align: left">@item.PlayerAway</td>
             </tr>
         }
     </table>
+    @using (Html.BeginForm("DeleteResult", "Home", new { id = Model.LastResultId }, FormMethod.Post))
+    {
+        <input type="submit" name="submit" value="Delete Last Result">
+    }
     <h2>Players</h2>
    @using (Html.BeginForm("AddPlayer", "Home", FormMethod.Post))
    {
        <p>@Html.EditorFor(o => o.NewPlayer) <input type="submit" name="submit" value="Add Player"></p>  
    }
-    @*<table>
+    <table>
         <tr>
             <th>Name</th>
         </tr>
@@ -97,5 +97,5 @@
                 <td>@item.Name</td>
             </tr>
         }
-    </table>*@
+    </table>
 </div>

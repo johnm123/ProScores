@@ -17,9 +17,9 @@ namespace ProScores.Data
         {
             using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
             {
-                store.Initialize(); // initializes document store, by connecting to server and downloading various configurations
+                store.Initialize();
 
-                using (IDocumentSession session = store.OpenSession()) // opens a session that will work in context of 'DefaultDatabase'
+                using (IDocumentSession session = store.OpenSession()) 
                 {
                     var collection = session.Query<ProEvoResult>().ToList();
                     return collection;
@@ -44,7 +44,6 @@ namespace ProScores.Data
 
         public Player Create(Player player)
         {
-            //using (IDocumentStore store = new DocumentStore { Url = _dbUrl, DefaultDatabase = DbName })
             using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
             {
                 store.Initialize();
@@ -62,9 +61,9 @@ namespace ProScores.Data
         {
             using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
             {
-                store.Initialize(); // initializes document store, by connecting to server and downloading various configurations
+                store.Initialize(); 
 
-                using (IDocumentSession session = store.OpenSession()) // opens a session that will work in context of 'DefaultDatabase'
+                using (IDocumentSession session = store.OpenSession()) 
                 {
                     var collection = session.Query<Player>().ToList();
                     return collection;
@@ -80,7 +79,7 @@ namespace ProScores.Data
 
                 using (IDocumentSession session = store.OpenSession())
                 {
-                    string cmd = "ProEvoResults/" + id;
+                    string cmd = typeof(ProEvoResult).Name + "s/" + id;
                     session.Delete(cmd);
                     session.SaveChanges();
                 }
