@@ -24,7 +24,10 @@ namespace ProScores.Controllers
         [HttpPost]
         public ActionResult AddResult(ScoresPageViewModel vm)
         {
-            _resultManager.AddResult(vm.NewResult);
+            if (ModelState.IsValid)
+            {
+                _resultManager.AddResultIfValid(vm.NewResult);
+            }
 
             return RedirectToAction("Index");
         }
@@ -32,7 +35,10 @@ namespace ProScores.Controllers
         [HttpPost]
         public ActionResult AddPlayer(ScoresPageViewModel vm)
         {
-            _resultManager.AddPlayer(vm.NewPlayer);
+            if (ModelState.IsValid)
+            {
+                _resultManager.AddPlayerIfValid(vm.NewPlayer);
+            }
 
             return RedirectToAction("Index");
         }

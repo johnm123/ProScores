@@ -9,9 +9,9 @@ namespace ProScores.Logic
 
         IEnumerable<Player> GetAllPlayers();
 
-        void AddResult(ProEvoResult result);
+        void AddResultIfValid(ProEvoResult result);
 
-        void AddPlayer(Player player);
+        void AddPlayerIfValid(Player player);
 
         void RemoveResult(int id);
 

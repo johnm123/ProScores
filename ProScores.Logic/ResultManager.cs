@@ -19,15 +19,40 @@ namespace ProScores.Logic
             return _resultsDataStore.GetAll();
         }
 
-        public void AddResult(ProEvoResult result)
+        public void AddResultIfValid(ProEvoResult result)
         {
+            if (string.IsNullOrEmpty(result.TeamHome))
+                return;
+            
+            if (string.IsNullOrEmpty(result.TeamAway))
+                return;
+            
+            if (string.IsNullOrEmpty(result.PlayerHome))
+                return;
+            
+            if (string.IsNullOrEmpty(result.PlayerAway))
+                return;
+
+            if (result.TeamHome == result.TeamAway)
+                return;
+
+            if (result.PlayerHome == result.PlayerAway)
+                return;
+
+            result.RemoveWhiteSpaceFromTextFields();
+
             _resultsDataStore.CreateOrModify(result);
         }
 
-        public void AddPlayer(Player player)
+        public void AddPlayerIfValid(Player player)
         {
-            IEnumerable<Player> players =_resultsDataStore.GetAllPlayers();
-            
+            if (string.IsNullOrEmpty(player.Name))
+                return;
+
+            player.RemoveWhiteSpaceFromTextFields();
+
+            IEnumerable<Player> players =_resultsDataStore.GetAllPlayers();           
+
             if (players.Any(p => p.Name == player.Name))
                 return;
             
