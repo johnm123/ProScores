@@ -11,7 +11,7 @@ namespace ProScores.Logic
 
         void AddResultIfValid(ProEvoResult result);
 
-        void AddPlayerIfValid(Player player);
+        // void AddPlayerIfValid(Player player);
 
         void RemoveResult(int id);
 

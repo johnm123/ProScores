@@ -44,20 +44,20 @@ namespace ProScores.Logic
             _resultsDataStore.CreateOrModify(result);
         }
 
-        public void AddPlayerIfValid(Player player)
-        {
-            if (string.IsNullOrEmpty(player.Name))
-                return;
+        //public void AddPlayerIfValid(Player player)
+        //{
+        //    if (string.IsNullOrEmpty(player.Name))
+        //        return;
 
-            player.RemoveWhiteSpaceFromTextFields();
+        //    player.RemoveWhiteSpaceFromTextFields();
 
-            IEnumerable<Player> players =_resultsDataStore.GetAllPlayers();           
+        //    IEnumerable<Player> players =_resultsDataStore.GetAllPlayers();           
 
-            if (players.Any(p => p.Name == player.Name))
-                return;
+        //    if (players.Any(p => p.Name == player.Name))
+        //        return;
             
-            _resultsDataStore.Create(player);
-        }
+        //    _resultsDataStore.Create(player);
+        //}
 
         public IEnumerable<Player> GetAllPlayers()
         {
