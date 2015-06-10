@@ -88,7 +88,7 @@
                 <td style="text-align: right">@item.PlayerHome (@item.TeamHome)</td>
                 <td style="text-align: center">@item.GoalsHome-@item.GoalsAway
                 <td style="text-align: left">@item.PlayerAway (@item.TeamAway)</td>
-                <td style="text-align: left">@item.Comments</td>
+                <td style="text-align: left;">@item.Comments</td>
             </tr>
         }
     </table>
@@ -96,12 +96,12 @@
     {
         <input type="submit" name="submit" value="Delete Last Result">
     }
-    <h2>Players</h2>
-    @*@using (Html.BeginForm("AddPlayer", "Home", FormMethod.Post))
+   @* <h2>Players</h2>
+   @using (Html.BeginForm("AddPlayer", "Home", FormMethod.Post))
     {
         <p>@Html.EditorFor(o => o.NewPlayer) <input type="submit" name="submit" value="Add Player"></p>
     }*@
-    <table>
+    @*<table>
         <tr>
             <th>Name</th>
         </tr>
@@ -111,5 +111,5 @@
                 <td>@item.Name</td>
             </tr>
         }
-    </table>
+    </table>*@
 </div>
