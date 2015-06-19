@@ -1,11 +1,8 @@
-﻿@using System.Collections.Generic
-@model ProScores.Models.ScoresPageViewModel
+﻿@model ProScores.Models.ScoresPageViewModel
 @{
     ViewBag.Title = "Pro Evo Scores";
 }
-<head>
-    <link rel="stylesheet" href="..\..\Content\Site.css">
-</head>
+
 <div class="col-md-4">
     <h2>Add Result</h2>
     @using (Html.BeginForm("AddResult", "Home", FormMethod.Post))
@@ -96,20 +93,4 @@
     {
         <input type="submit" name="submit" value="Delete Last Result">
     }
-   @* <h2>Players</h2>
-   @using (Html.BeginForm("AddPlayer", "Home", FormMethod.Post))
-    {
-        <p>@Html.EditorFor(o => o.NewPlayer) <input type="submit" name="submit" value="Add Player"></p>
-    }*@
-    @*<table>
-        <tr>
-            <th>Name</th>
-        </tr>
-        @foreach (var item in Model.Players)
-        {
-            <tr>
-                <td>@item.Name</td>
-            </tr>
-        }
-    </table>*@
 </div>
