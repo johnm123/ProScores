@@ -1,53 +1,42 @@
-﻿@using System.Collections.Generic
-@model ProScores.Models.ScoresPageViewModel
+﻿@model ProScores.Models.ScoresPageViewModel
 @{
     ViewBag.Title = "Pro Evo Scores";
 }
-<head>
-    <link rel="stylesheet" href="..\..\Content\Site.css">
-</head>
-<div class="col-md-4">
-    <h2>Add Result</h2>
-    @using (Html.BeginForm("AddResult", "Home", FormMethod.Post))
-    {
-        var playerListItems = new List<SelectListItem>();
+<div class="container">
+    <section>
+        <h2>Add Result</h2>
+        <p>
+            <select id="drp-players-home">
+                <option disabled selected>Select home player..</option>
+                <option>Boo</option>
+                <option>Boo</option>
+                <option>Boo</option>
+                <option>Boo</option>
+            </select>
+            <label></label>
+            <select id="drp-players-away">
+                <option disabled selected>Select away player..</option>
+                <option>Boo</option>
+                <option>Boo</option>
+                <option>Boo</option>
+                <option>Boo</option>                
+            </select>
+        </p>
+        <p>
+            <input type="text" id="txt-home-team" placeholder="home team"/>
+            <label>VS</label>
+            <input type="text" id="txt-away-team" placeholder="away team"/>
+        </p>
+        <p>
+            <input type="text" id="txt-home-score" placeholder="home score" pattern="\d*" />
+            <label></label>
+            <input type="text" id="txt-away-score" placeholder="away score" pattern="\d*" />
+        </p>
+        <p>
+            <input type="button" name="btn-add-result" value="Add Result">            
+        </p>
+    </section>
 
-        foreach (var player in Model.Players)
-        {
-            var item = new SelectListItem()
-            {
-                Value = player.Name,
-                Text = player.Name
-            };
-            playerListItems.Add(item);
-        }
-
-        <table>
-            <tr>
-                <td>Home Player</td>
-                <td>@Html.DropDownListFor(o => o.NewResult.PlayerHome, playerListItems, "Select Player") </td>
-                <td>Away Player</td>
-                <td>@Html.DropDownListFor(o => o.NewResult.PlayerAway, playerListItems, "Select Player") </td>
-                <td rowspan="3"><input type="submit" name="submit" value="Add Result"></td>
-            </tr>
-            <tr>
-                <td>Home Team</td>
-                <td>@Html.EditorFor(o => o.NewResult.TeamHome)</td>
-                <td>Away Team</td>
-                <td>@Html.EditorFor(o => o.NewResult.TeamAway)</td>
-            </tr>
-            <tr>
-                <td>Goals</td>
-                <td>@Html.EditorFor(o => o.NewResult.GoalsHome)</td>
-                <td>Goals</td>
-                <td>@Html.EditorFor(o => o.NewResult.GoalsAway)</td>
-            </tr>
-            <tr>
-                <td>Comments</td>
-                <td>@Html.EditorFor(o => o.NewResult.Comments)</td>
-            </tr>
-        </table>
-    }
     <h2>Rankings</h2>
     <table>
         <tr>
@@ -76,40 +65,25 @@
     <table>
         <tr>
             <th>Date</th>
-            <th>Home Player</th>
+            <th>Fixture</th>
             <th>Score</th>
-            <th>Away Player</th>
             <th>Comments</th>
         </tr>
         @foreach (var item in Model.Results)
         {
             <tr>
-                <td style="text-align: left">@item.Date.ToShortDateString()</td>
-                <td style="text-align: right">@item.PlayerHome (@item.TeamHome)</td>
-                <td style="text-align: center">@item.GoalsHome-@item.GoalsAway
-                <td style="text-align: left">@item.PlayerAway (@item.TeamAway)</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>@item.PlayerHome vs @item.PlayerAway</td>
+
+
+                <td>@item.GoalsHome-@item.GoalsAway</td>
                 <td style="text-align: left;">@item.Comments</td>
             </tr>
         }
     </table>
     @using (Html.BeginForm("DeleteResult", "Home", new { id = Model.LastResultId }, FormMethod.Post))
     {
-        <input type="submit" name="submit" value="Delete Last Result">
+        <p><input type="button" name="submit" value="Delete Last Result">
+        </p>
     }
-   @* <h2>Players</h2>
-   @using (Html.BeginForm("AddPlayer", "Home", FormMethod.Post))
-    {
-        <p>@Html.EditorFor(o => o.NewPlayer) <input type="submit" name="submit" value="Add Player"></p>
-    }*@
-    @*<table>
-        <tr>
-            <th>Name</th>
-        </tr>
-        @foreach (var item in Model.Players)
-        {
-            <tr>
-                <td>@item.Name</td>
-            </tr>
-        }
-    </table>*@
 </div>

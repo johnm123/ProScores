@@ -1,0 +1,116 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', 'Tahoma';
+  font-size: 1em;
+  color: #bbbbbb;
+  background-color: #fbfbfb; }
+
+h1 {
+  font-family: 'Raleway';
+  font-weight: 300;
+  font-size: 3em;
+  color: #333333;
+  text-align: center;
+  letter-spacing: -0.05em; }
+
+h2 {
+  font-family: 'Cabin';
+  font-weight: 700;
+  text-transform: uppercase; }
+
+table {
+  width: 100%; }
+
+th {
+  background: #8b95a4 none repeat scroll 0 0;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #dfebf3;
+  color: #fff;
+  font-family: 'Raleway';
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  width: 42px; }
+
+td {
+  border-bottom: 1px solid #dfebf3;
+  border-right: 1px solid #dfebf3;
+  color: #666;
+  font-size: 1em;
+  text-align: center; }
+
+input[type="button"] {
+  padding: 1em;
+  background: #8cbde0;
+  border: 0;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer; }
+
+::-webkit-input-placeholder {
+  color: #9b9b9b;
+  font-style: italic; }
+
+::-moz-placeholder {
+  color: #9b9b9b;
+  font-style: italic; }
+
+/* firefox 19+ */
+:-ms-input-placeholder {
+  color: #9b9b9b;
+  font-style: italic; }
+
+/* ie */
+input:-moz-placeholder {
+  color: #9b9b9b;
+  font-style: italic; }
+
+input[type=text] {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 5px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  height: 28px;
+  width: 220px; }
+
+input[type=text] .small, textarea .small {
+  width: 100px; }
+
+input[type=text] .large, textarea .large {
+  width: 200px; }
+
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px #51cbee;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #51cbee; }
+
+select {
+  border: 1px solid #111;
+  width: 230px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(http://cdn.bavotasan.com/wp-content/uploads/2011/05/down_arrow_select.jpg) 100%/15% no-repeat white; }
+
+label {
+  width: 80px;
+  display: inline-block;
+  text-align: center; }
+
+.container {
+  width: 80%;
+  margin: 0 auto; }
+

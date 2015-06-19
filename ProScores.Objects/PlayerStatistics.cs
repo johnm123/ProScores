@@ -2,6 +2,8 @@
 {
     public class PlayerStatistics
     {
+        private const int points = 3;
+
         public string PlayerName { get; set; }
 
         public int GoalsScored { get; set; }
@@ -18,7 +20,10 @@
 
         public int TotalPoints
         {
-            get { return Draws + (3*Wins); }
+            get
+            {
+                return Draws + (points * Wins);
+            }
         }
 
         public int GoalDifference
