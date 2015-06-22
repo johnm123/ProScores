@@ -16,9 +16,9 @@ namespace ProScores.Data
         {
             var players = new List<Player>
             {
-                new Player() { DisplayName = "Rimmer", Name = "Shaun" },
-                new Player() { DisplayName = null, Name = "Jabroni" },
-                new Player() { DisplayName = "The King", Name = "John.M" }
+                new Player() { NickName = "Rimmer", Name = "Shaun" },
+                new Player() { NickName = null, Name = "Jabroni" },
+                new Player() { NickName = "The King", Name = "John.M" }
             };
             return players;
         }

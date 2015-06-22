@@ -8,18 +8,18 @@ namespace ProScores.Objects
         [Required, MinLength(3)]
         public string Name { get; set; }
 
-        private string _displayName;
+        public string NickName { get; set; }
 
         public string DisplayName
         {
-            set { _displayName = value; }
+            set { this.NickName = value; }
             get
             {
-                if (string.IsNullOrEmpty(_displayName))
+                if (string.IsNullOrEmpty(this.NickName))
                 {
-                    return Name;
+                    return this.Name;
                 }
-                return _displayName;
+                return this.NickName;
             }
         }
 
