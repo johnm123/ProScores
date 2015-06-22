@@ -6,12 +6,6 @@ namespace ProScores.Models
 {
     public class ScoresPageViewModel
     {
-        private IEnumerable<Player> players = new[]
-                       {
-                           new Player() { Name = "Foo" }, 
-                           new Player() { Name = "Boo" }
-                       };
-
         public ScoresPageViewModel()
         {
             NewResult = new ProEvoResult()
@@ -30,17 +24,8 @@ namespace ProScores.Models
 
         public ProEvoResult NewResult { get; set; }
 
-        public IEnumerable<Player> Players
-        {
-            get
-            {
-                return this.players;
-            }
-            set
-            {
-            }
-        }
-
+        public IEnumerable<Player> Players { get; set; }
+        
         public Player NewPlayer { get; set; }
 
         public int LastResultId { get; set; }
