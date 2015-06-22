@@ -12,7 +12,6 @@ namespace ProScores.Objects
 
         public string DisplayName
         {
-            set { this.NickName = value; }
             get
             {
                 if (string.IsNullOrEmpty(this.NickName))
