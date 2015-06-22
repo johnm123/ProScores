@@ -13,6 +13,7 @@ namespace ProScores.DependencyInjection
             container.Register(Classes.FromThisAssembly().BasedOn<IController>().LifestyleTransient());
             container.Register(Component.For<IResultManager>().ImplementedBy<ResultManager>());
             container.Register(Component.For<IProScoresDataStore>().ImplementedBy<ProScoresDataStore>());
+            //container.Register(Component.For<IProScoresDataStore>().ImplementedBy<FakeProScoresDataStore>());
         }
     }
 }

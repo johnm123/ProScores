@@ -9,7 +9,7 @@
 
         foreach (var player in Model.Players)
         {
-            var item = new SelectListItem() { Text = player.Name, Value = player.Name };
+            var item = new SelectListItem() { Text = player.DisplayName, Value = player.Name };
             playerListItems.Add(item);
         }
 

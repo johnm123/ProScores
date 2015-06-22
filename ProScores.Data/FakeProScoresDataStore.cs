@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+
 using ProScores.Objects;
 
 namespace ProScores.Data
@@ -13,7 +14,13 @@ namespace ProScores.Data
 
         public IEnumerable<Player> GetAllPlayers()
         {
-            return new List<Player>();
+            var players = new List<Player>
+            {
+                new Player() { DisplayName = "Rimmer", Name = "Shaun" },
+                new Player() { DisplayName = null, Name = "Jabroni" },
+                new Player() { DisplayName = "The King", Name = "John.M" }
+            };
+            return players;
         }
 
         public ProEvoResult CreateOrModify(ProEvoResult result)
