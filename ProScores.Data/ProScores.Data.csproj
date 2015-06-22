@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeProScoresDataStore.cs" />
     <Compile Include="IProScoresDataStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProScoresDataStore.cs" />

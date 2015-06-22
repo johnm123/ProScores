@@ -41,7 +41,7 @@ td {
   font-size: 1em;
   text-align: center; }
 
-input[type="button"] {
+input[type="submit"] {
   padding: 1em;
   background: #8cbde0;
   border: 0;
@@ -67,7 +67,7 @@ input:-moz-placeholder {
   color: #9b9b9b;
   font-style: italic; }
 
-input[type=text] {
+input[type=text], input[type=number] {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
@@ -81,6 +81,11 @@ input[type=text] {
   border-radius: 5px;
   height: 28px;
   width: 220px; }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
 
 input[type=text] .small, textarea .small {
   width: 100px; }
@@ -105,6 +110,11 @@ select {
   appearance: none;
   background: url(http://cdn.bavotasan.com/wp-content/uploads/2011/05/down_arrow_select.jpg) 100%/15% no-repeat white; }
 
+textarea {
+  width: 80%;
+  height: 200px;
+  font-family: 'Open Sans'; }
+
 label {
   width: 80px;
   display: inline-block;
@@ -113,4 +123,7 @@ label {
 .container {
   width: 80%;
   margin: 0 auto; }
+
+.large {
+  width: 100%; }
 

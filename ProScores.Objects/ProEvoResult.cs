@@ -25,6 +25,7 @@ namespace ProScores.Objects
 
         public DateTime Date { get; set; }
 
+        [DataType(DataType.MultilineText)]
         public string Comments { get; set; }
 
         public void RemoveWhiteSpaceFromTextFields()
@@ -33,7 +34,7 @@ namespace ProScores.Objects
             PlayerAway = PlayerAway.Trim();
             TeamHome = TeamHome.Trim();
             TeamAway = TeamAway.Trim();
-            Comments = Comments.Trim();
+            Comments = Comments != null ? Comments.Trim() : String.Empty;
         }
     }
 }

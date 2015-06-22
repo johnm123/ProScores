@@ -4,8 +4,6 @@ using ProScores.Objects;
 
 namespace ProScores.Models
 {
-    using System.Linq;
-
     public class ScoresPageViewModel
     {
         private IEnumerable<Player> players = new[]

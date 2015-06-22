@@ -3,39 +3,41 @@
     ViewBag.Title = "Pro Evo Scores";
 }
 <div class="container">
-    <section>
-        <h2>Add Result</h2>
-        <p>
-            <select id="drp-players-home">
-                <option disabled selected>Select home player..</option>
-                <option>Boo</option>
-                <option>Boo</option>
-                <option>Boo</option>
-                <option>Boo</option>
-            </select>
-            <label></label>
-            <select id="drp-players-away">
-                <option disabled selected>Select away player..</option>
-                <option>Boo</option>
-                <option>Boo</option>
-                <option>Boo</option>
-                <option>Boo</option>                
-            </select>
-        </p>
-        <p>
-            <input type="text" id="txt-home-team" placeholder="home team"/>
-            <label>VS</label>
-            <input type="text" id="txt-away-team" placeholder="away team"/>
-        </p>
-        <p>
-            <input type="text" id="txt-home-score" placeholder="home score" pattern="\d*" />
-            <label></label>
-            <input type="text" id="txt-away-score" placeholder="away score" pattern="\d*" />
-        </p>
-        <p>
-            <input type="button" name="btn-add-result" value="Add Result">            
-        </p>
-    </section>
+    @using (Html.BeginForm("AddResult", "Home", FormMethod.Post))
+    {
+        var playerListItems = new List<SelectListItem>();
+
+        foreach (var player in Model.Players)
+        {
+            var item = new SelectListItem() { Text = player.Name, Value = player.Name };
+            playerListItems.Add(item);
+        }
+
+        <section>
+            <h2>Add Result</h2>
+            <p>
+                @Html.DropDownListFor(o => o.NewResult.PlayerHome, playerListItems, "Select Player")
+                <label></label>
+                @Html.DropDownListFor(o => o.NewResult.PlayerAway, playerListItems, "Select Player")
+            </p>
+            <p>
+                @Html.EditorFor(x => x.NewResult.TeamHome, new { htmlAttributes = new { placeholder = "home team" } })
+                <label>VS</label>
+                @Html.EditorFor(x => x.NewResult.TeamAway, new { htmlAttributes = new { placeholder = "away team" } })
+            </p>
+            <p>
+                @Html.EditorFor(x => x.NewResult.GoalsHome, new { htmlAttributes = new { placeholder = "goals home", pattern = @"\d*" } })
+                <label></label>
+                @Html.EditorFor(x => x.NewResult.GoalsAway, new { htmlAttributes = new { placeholder = "goals away", pattern = @"\d*" } })
+            </p>
+            <p>
+                @Html.EditorFor(o => o.NewResult.Comments, new { htmlAttributes = new { placeholder = "comments" } } )
+            </p>
+            <p>
+                <input type="submit" name="btn-add-result" value="Add Result">
+            </p>
+        </section>
+    }
 
     <h2>Rankings</h2>
     <table>
@@ -73,9 +75,7 @@
         {
             <tr>
                 <td>@item.Date.ToShortDateString()</td>
-                <td>@item.PlayerHome vs @item.PlayerAway</td>
-
-
+                <td>@item.PlayerHome (@item.TeamHome) vs @item.PlayerAway (@item.TeamAway)</td>
                 <td>@item.GoalsHome-@item.GoalsAway</td>
                 <td style="text-align: left;">@item.Comments</td>
             </tr>
@@ -83,7 +83,8 @@
     </table>
     @using (Html.BeginForm("DeleteResult", "Home", new { id = Model.LastResultId }, FormMethod.Post))
     {
-        <p><input type="button" name="submit" value="Delete Last Result">
+        <p>
+            <input type="submit" name="submit" value="Delete Last Result">
         </p>
     }
 </div>

@@ -32,17 +32,6 @@ namespace ProScores.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpPost]
-        //public ActionResult AddPlayer(ScoresPageViewModel vm)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _resultManager.AddPlayerIfValid(vm.NewPlayer);
-        //    }
-
-        //    return RedirectToAction("Index");
-        //}
-
         [HttpPost]
         public ActionResult DeleteResult(int id)
         {
