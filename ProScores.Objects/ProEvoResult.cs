@@ -66,6 +66,7 @@ namespace ProScores.Objects
             TeamHome = TeamHome.Trim();
             TeamAway = TeamAway.Trim();
             CommentsHome = CommentsHome != null ? CommentsHome.Trim() : String.Empty;
+            CommentsAway = CommentsAway != null ? CommentsAway.Trim() : String.Empty;
         }
     }
 }
