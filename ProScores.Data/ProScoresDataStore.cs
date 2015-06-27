@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ProScores.Objects;
 using Raven.Client;
 using Raven.Client.Document;
-
 
 namespace ProScores.Data
 {
@@ -13,6 +13,8 @@ namespace ProScores.Data
 
         private const string RavenConnectionStringName = "RavenDB";
 
+        private const int ResultsMaxWaitInMs = 500;
+
         public IEnumerable<ProEvoResult> GetAll()
         {
             using (IDocumentStore store = new DocumentStore { ConnectionStringName = RavenConnectionStringName, DefaultDatabase = DbName })
@@ -21,7 +23,12 @@ namespace ProScores.Data
 
                 using (IDocumentSession session = store.OpenSession()) 
                 {
-                    var collection = session.Query<ProEvoResult>().ToList();
+                    //var collection = session.Query<ProEvoResult>().ToList();  
+
+                    // Because of eventual consistency, sometime the newly added result hasn't been saved before requesting them again.
+                    var collection = session.Query<ProEvoResult>().
+                        Customize(x => x.WaitForNonStaleResultsAsOfNow(TimeSpan.FromMilliseconds(ResultsMaxWaitInMs))).ToList();
+                
                     return collection;
                 }
             }

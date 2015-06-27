@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProScores.Objects
@@ -25,8 +26,38 @@ namespace ProScores.Objects
 
         public DateTime Date { get; set; }
 
-        [DataType(DataType.MultilineText)]
-        public string Comments { get; set; }
+        public string CommentsHome { get; set; }
+
+        public string CommentsAway { get; set; }
+
+        public string GetMergedComments()
+        {
+            var stringBuilder = new StringBuilder();
+
+            if (!String.IsNullOrEmpty(CommentsHome))
+            {
+                stringBuilder.Append(PlayerHome);
+                stringBuilder.Append(": \"");
+                stringBuilder.Append(CommentsHome);
+                stringBuilder.Append("\"");
+              
+                if (!String.IsNullOrEmpty(CommentsAway))
+                {
+                    // Add a space if we know some more comments are coming...
+                    stringBuilder.Append(" ");
+                }
+            }
+            
+            if (!String.IsNullOrEmpty(CommentsAway))
+            {
+                stringBuilder.Append(PlayerAway);
+                stringBuilder.Append(": \"");
+                stringBuilder.Append(CommentsAway);
+                stringBuilder.Append("\"");
+            }
+          
+            return stringBuilder.ToString();
+        }
 
         public void RemoveWhiteSpaceFromTextFields()
         {
@@ -34,7 +65,7 @@ namespace ProScores.Objects
             PlayerAway = PlayerAway.Trim();
             TeamHome = TeamHome.Trim();
             TeamAway = TeamAway.Trim();
-            Comments = Comments != null ? Comments.Trim() : String.Empty;
+            CommentsHome = CommentsHome != null ? CommentsHome.Trim() : String.Empty;
         }
     }
 }

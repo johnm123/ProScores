@@ -52,7 +52,8 @@ namespace ProScores.Data
                     PlayerAway = "John.M",
                     TeamAway = "Real Madrid",
                     GoalsAway = 5,
-                    Comments = "Easy",
+                    CommentsHome = "Easy",
+                    CommentsAway = "Hard",
                     Date = DateTime.Now
                 },
                 new ProEvoResult()
@@ -64,7 +65,34 @@ namespace ProScores.Data
                     PlayerAway = "John.M",
                     TeamAway = "Real Madrid",
                     GoalsAway = 3,
-                    Comments = "Easy still",
+                    CommentsHome = "Easy still",
+                    CommentsAway = "Trying my heart out.",
+                    Date = DateTime.Now
+                },
+                new ProEvoResult()
+                {
+                    Id = 3,
+                    PlayerHome = "Shaun",
+                    TeamHome = "Chelsea",
+                    GoalsHome = 1,
+                    PlayerAway = "John.M",
+                    TeamAway = "Real Madrid",
+                    GoalsAway = 3,
+                    CommentsHome = null,
+                    CommentsAway = "Trying my heart out again.",
+                    Date = DateTime.Now
+                },
+                new ProEvoResult()
+                {
+                    Id = 3,
+                    PlayerHome = "Shaun",
+                    TeamHome = "Chelsea",
+                    GoalsHome = 1,
+                    PlayerAway = "John.M",
+                    TeamAway = "Real Madrid",
+                    GoalsAway = 3,
+                    CommentsHome = "Wasn't even thinking about the game.",
+                    CommentsAway = null,
                     Date = DateTime.Now
                 },
             };

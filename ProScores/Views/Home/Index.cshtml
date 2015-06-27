@@ -31,7 +31,9 @@
                 @Html.EditorFor(x => x.NewResult.GoalsAway, new { htmlAttributes = new { placeholder = "goals away", pattern = @"\d*" } })
             </p>
             <p>
-                @Html.EditorFor(o => o.NewResult.Comments, new { htmlAttributes = new { placeholder = "comments" } } )
+                @Html.EditorFor(o => o.NewResult.CommentsHome, new { htmlAttributes = new { placeholder = "comments home" } } )
+                <label></label>
+                @Html.EditorFor(o => o.NewResult.CommentsAway, new { htmlAttributes = new { placeholder = "comments away" } })
             </p>
             <p>
                 <input type="submit" name="btn-add-result" value="Add Result">
@@ -77,7 +79,7 @@
                 <td>@item.Date.ToShortDateString()</td>
                 <td>@item.PlayerHome (@item.TeamHome) vs @item.PlayerAway (@item.TeamAway)</td>
                 <td>@item.GoalsHome-@item.GoalsAway</td>
-                <td style="text-align: left;">@item.Comments</td>
+                <td style="text-align: left;">@item.GetMergedComments()</td>
             </tr>
         }
     </table>
