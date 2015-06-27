@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProScores.Data", "ProScores
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProScores.Logic", "ProScores.Logic\ProScores.Logic.csproj", "{BCB21010-1DC7-44F9-9168-07B4EA0F8890}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProScores.UnitTest", "ProScores.UnitTest\ProScores.UnitTest.csproj", "{C5C12B8E-F1E2-41DE-9EF2-949DC8C89E25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BCB21010-1DC7-44F9-9168-07B4EA0F8890}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCB21010-1DC7-44F9-9168-07B4EA0F8890}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCB21010-1DC7-44F9-9168-07B4EA0F8890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5C12B8E-F1E2-41DE-9EF2-949DC8C89E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C12B8E-F1E2-41DE-9EF2-949DC8C89E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C12B8E-F1E2-41DE-9EF2-949DC8C89E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C12B8E-F1E2-41DE-9EF2-949DC8C89E25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
