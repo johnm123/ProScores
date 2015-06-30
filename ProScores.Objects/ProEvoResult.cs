@@ -30,14 +30,9 @@ namespace ProScores.Objects
 
         public string CommentsAway { get; set; }
 
-        // This is so that old comments can be used.
-        public string Comments { get; set; }
-
         public string GetMergedComments()
         {
-            if (!String.IsNullOrEmpty(Comments))
-                return Comments;
-
+            // This logic might be better in the view model or view. 
             var stringBuilder = new StringBuilder();
 
             if (!String.IsNullOrEmpty(CommentsHome))
@@ -73,7 +68,6 @@ namespace ProScores.Objects
             TeamAway = TeamAway.Trim();
             CommentsHome = CommentsHome != null ? CommentsHome.Trim() : String.Empty;
             CommentsAway = CommentsAway != null ? CommentsAway.Trim() : String.Empty;
-            Comments = Comments != null ? Comments.Trim() : String.Empty;
         }
     }
 }
