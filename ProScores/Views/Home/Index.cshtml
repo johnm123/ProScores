@@ -1,4 +1,5 @@
-﻿@model ProScores.Models.ScoresPageViewModel
+﻿@using ProScores.Objects
+@model ProScores.Models.ScoresPageViewModel
 @{
     ViewBag.Title = "Pro Evo Scores";
 }
@@ -71,15 +72,16 @@
             <th>Date</th>
             <th>Fixture</th>
             <th>Score</th>
-            <th>Comments</th>
+            <th colspan="2">Comments</th>
         </tr>
-        @foreach (var item in Model.Results)
+        @foreach (var result in Model.Results)
         {
             <tr>
-                <td>@item.Date.ToShortDateString()</td>
-                <td>@item.PlayerHome (@item.TeamHome) vs @item.PlayerAway (@item.TeamAway)</td>
-                <td>@item.GoalsHome-@item.GoalsAway</td>
-                <td style="text-align: left;">@item.GetMergedComments()</td>
+                <td>@result.Date.ToShortDateString()</td>
+                <td>@result.PlayerHome (@result.TeamHome) vs @result.PlayerAway (@result.TeamAway)</td>
+                <td>@result.GoalsHome-@result.GoalsAway</td>
+                <td>@result.MergedComments().PlayerHome : "@result.MergedComments().CommentsHome"</td>
+                <td>@result.MergedComments().PlayerAway : "@result.MergedComments().CommentsAway"</td>
             </tr>
         }
     </table>

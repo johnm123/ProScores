@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProScores.Objects
@@ -30,34 +29,15 @@ namespace ProScores.Objects
 
         public string CommentsAway { get; set; }
 
-        public string GetMergedComments()
+        public MergedComments MergedComments()
         {
-            // This logic might be better in the view model or view. 
-            var stringBuilder = new StringBuilder();
-
-            if (!String.IsNullOrEmpty(CommentsHome))
-            {
-                stringBuilder.Append(PlayerHome);
-                stringBuilder.Append(": \"");
-                stringBuilder.Append(CommentsHome);
-                stringBuilder.Append("\"");
-              
-                if (!String.IsNullOrEmpty(CommentsAway))
-                {
-                    // Add a space if we know some more comments are coming...
-                    stringBuilder.Append(" ");
-                }
-            }
-            
-            if (!String.IsNullOrEmpty(CommentsAway))
-            {
-                stringBuilder.Append(PlayerAway);
-                stringBuilder.Append(": \"");
-                stringBuilder.Append(CommentsAway);
-                stringBuilder.Append("\"");
-            }
-          
-            return stringBuilder.ToString();
+            return new MergedComments()
+                   {
+                       CommentsAway = CommentsAway,
+                       CommentsHome = CommentsHome,
+                       PlayerAway = PlayerAway, 
+                       PlayerHome = PlayerHome
+                   };
         }
 
         public void RemoveWhiteSpaceFromTextFields()

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MergedComments.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerStatistics.cs" />
     <Compile Include="ProEvoResult.cs" />
